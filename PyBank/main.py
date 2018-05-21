@@ -6,7 +6,7 @@ csvpath1 = os.path.join(folder_name, 'budget_data_1.csv')
 csvpath2 = os.path.join(folder_name, 'budget_data_2.csv')
 report_path = os.path.join(folder_name, 'report.txt')
 
-with open(csvpath1) as f_in:
+with open(csvpath2) as f_in:
 	reader = csv.reader(f_in)
 	next(reader) #Skip header row
 	data = list(reader)
