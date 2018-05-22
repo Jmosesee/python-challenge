@@ -16,7 +16,7 @@ def read_revenue_data(filename):
 	with open(csvpath) as f_in:
 		reader = csv.reader(f_in)
 		next(reader) #Skip header row
-		return [[x[0],eval(x[1])] for x in reader] #Inline Cleaning)
+		return [[x[date_column],eval(x[revenue_column])] for x in reader] #Inline Cleaning)
 
 def analyze_and_output_revenue_data(revenue_data, filename):
 	total_months = len(revenue_data)
@@ -41,12 +41,12 @@ def analyze_and_output_revenue_data(revenue_data, filename):
 			f_out.write(line)
 			f_out.write("\r\n")
 
-#It turns out that the challenge of merging the two datasets is actually not required, but I attempted it anyway
+#It turns out that merging the two datasets is actually not required, but since had already started on it, here it is as a bonus:
 def scrub_dates(revenue_data):
 	separator = '-'
-	dates = [row[0].split(separator) for row in revenue_data]
+	dates = [row[date_column].split(separator) for row in revenue_data]
 	scrubbed_dates = [separator.join(date) if len(date[year_column]) <= 3 else separator.join([date[month_column], date[year_column][2:]]) for date in dates]
-	return [list(row) for row in zip(scrubbed_dates, [row[1] for row in revenue_data])]
+	return [list(row) for row in zip(scrubbed_dates, [row[revenue_column] for row in revenue_data])]
 
 #merge list2 into list1 and return list1
 def merge_lists(list1, list2):
