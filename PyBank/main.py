@@ -32,6 +32,7 @@ def analyze_and_output_revenue_data(revenue_data, filename):
 	output_text.append("----------------------------")
 	output_text.append("Total Months: {}".format(total_months))
 	output_text.append("Total Revenue: ${}".format(total_revenue))
+	output_text.append("Average Revenue Change: ${}".format(average_revenue_change))
 	output_text.append("Greatest Increase in Revenue: {} (${})".format(revenue_data[max_i+1][date_column],max_change))
 	output_text.append("Greatest Decrease in Revenue: {} (${})".format(revenue_data[min_i+1][date_column],min_change))
 
